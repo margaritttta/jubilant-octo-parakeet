@@ -1,0 +1,28 @@
+-- 1. Выведите все товары из категории «Электроника»
+SELECT * FROM products WHERE category = 'Электроника';
+
+-- 2. Выведите товары из категории «Одежда», у которых в названии есть слово «женские»
+SELECT * FROM products WHERE category = 'Одежда' AND name LIKE '%женские%';
+
+-- 3. Выведите товары, которые относятся к категории «Продукты» или «Книги»
+SELECT * FROM products WHERE category = 'Продукты' OR category = 'Книги';
+
+-- 4. Выведите все товары, которые не относятся к категории «Бытовая техника»
+SELECT * FROM products WHERE category <> 'Бытовая техника';
+
+-- 5. Выведите товары, которые относятся к одной из категорий: «Электроника», «Одежда», «Книги»
+SELECT * FROM products WHERE category IN ('Электроника', 'Одежда', 'Книги');
+
+-- 6. Выведите товары:
+-- относятся к категории «Электроника» И содержат «Samsung» ИЛИ относятся к «Бытовая техника»
+SELECT * FROM products 
+WHERE (category = 'Электроника' AND name LIKE '%Samsung%') 
+   OR category = 'Бытовая техника';
+
+-- 7. Выведите товары, которые:
+-- (категория в списке И id от 1 до 15 И имя НЕ содержит Samsung) ИЛИ категория Книги
+SELECT * FROM products 
+WHERE (category IN ('Электроника', 'Одежда', 'Бытовая техника') 
+       AND product_id BETWEEN 1 AND 15 
+       AND name NOT LIKE '%Samsung%')
+   OR category = 'Книги';
